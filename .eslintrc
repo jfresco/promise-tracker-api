@@ -1,0 +1,22 @@
+{
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "ecmaFeatures": {
+        "arrowFunctions": true,
+        "blockBindings": true,
+        "defaultParams": true,
+        "forOf": true,
+        "jsx": false,
+        "modules": true
+    },
+    "rules": {
+        "eqeqeq": [2, "smart"],
+        "semi": [2, "never"],
+        "no-alert": 2,
+        "no-debugger": 2,
+        "no-console": 2,
+        "quotes": [2, "single"]
+    }
+}

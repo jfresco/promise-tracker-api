@@ -1,0 +1,23 @@
+{
+  "name": "promesas",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/babel-node index.js",
+    "lint": "./node_modules/.bin/eslint ."
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^11.0.1"
+  },
+  "dependencies": {
+    "babel": "^5.8.20",
+    "boom": "^2.8.0",
+    "debug": "^2.2.0",
+    "eslint": "^1.0.0",
+    "hapi": "^8.8.1",
+    "mongoose": "^4.1.1"
+  }
+}
