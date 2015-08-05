@@ -12,18 +12,6 @@ log('Connecting to database')
 mongoose.connect('mongodb://localhost/promesas')
 
 /*
- * Server static files
- */
-
-server.route({
-  method: 'GET',
-  path: '/{filename}',
-  handler: {
-    file: request => request.params.filename
-  }
-})
-
-/*
  * Launch server
  */
 
