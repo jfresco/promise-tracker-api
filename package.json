@@ -18,6 +18,8 @@
     "debug": "^2.2.0",
     "eslint": "^1.0.0",
     "hapi": "^8.8.1",
+    "hapi-auth-jwt2": "^4.9.0",
+    "jsonwebtoken": "^5.0.4",
     "mongoose": "^4.1.1"
   }
 }
