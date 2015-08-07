@@ -1,5 +1,6 @@
 import debug from 'debug'
-import server from './src/api'
+import './src/api'
+import server from './src/server'
 import mongoose from 'mongoose'
 
 const log = debug('promise-tracker-api:main')
