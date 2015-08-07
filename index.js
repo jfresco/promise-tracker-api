@@ -2,7 +2,7 @@ import debug from 'debug'
 import server from './src/api'
 import mongoose from 'mongoose'
 
-const log = debug('promesometro:main')
+const log = debug('promise-tracker-api:main')
 
 /*
  * Bootstrap database connection

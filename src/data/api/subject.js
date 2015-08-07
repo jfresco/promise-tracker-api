@@ -1,7 +1,7 @@
 import debug from 'debug'
 import Subject from '../models/subject'
 
-const log = debug('promesometro:data:api:subject')
+const log = debug('promise-tracker-api:data:api:subject')
 
 export function all (cb) {
   Subject

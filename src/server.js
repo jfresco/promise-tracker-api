@@ -3,7 +3,7 @@ import Hapi from 'hapi'
 import jwt from 'hapi-auth-jwt2'
 import config from './config'
 
-const log = debug('promesometro:server')
+const log = debug('promise-tracker-api:server')
 
 const server = new Hapi.Server()
 

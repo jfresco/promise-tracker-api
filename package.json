@@ -1,7 +1,7 @@
 {
-  "name": "promesas",
+  "name": "promise-tracker-api",
+  "description": "Keep track of politician's promises",
   "version": "0.0.1",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/babel-node index.js",
