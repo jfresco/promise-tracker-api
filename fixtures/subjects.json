@@ -8,21 +8,25 @@
     "promises": [
       {
         "statement": "Lower taxes",
+        "description": "Just make all taxes lower without compromising social benefits",
         "fulfillment": 25,
         "impossible": false
       },
       {
         "statement": "Change colors of semaphor lights",
+        "description": "All semaphors will flash a blue light for stop, an orange light for warning and a purple light for advance",
         "fulfillment": 0,
         "impossible": true
       },
       {
         "statement": "Build special lanes for buses",
+        "description": "Will be called Metrobus and will be integrated with other transportation methods. The whole cluster will be called Subtrenmetrocleta.",
         "fulfillment": 100,
         "impossible": false
       },
       {
         "statement": "Make mandatory for bikers to use helmets",
+        "description": "To hide indecent hairstyles",
         "fulfillment": 33,
         "impossible": false
       }
@@ -37,21 +41,25 @@
     "promises": [
       {
         "statement": "Raise taxes",
+        "description": "The richer will pay more in order to the poorer get more benefits",
         "fulfillment": 0,
         "impossible": false
       },
       {
         "statement": "Football for everyone",
+        "description": "Broadcast all football matches for people joy",
         "fulfillment": 11,
         "impossible": true
       },
       {
         "statement": "Law-rate credits for buying boats",
+        "description": "The transportation of the future",
         "fulfillment": 50,
         "impossible": true
       },
       {
         "statement": "Amnesty for all military officers",
+        "description": "Oh yeah",
         "fulfillment": 33,
         "impossible": false
       }

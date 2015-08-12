@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const Predicate = new Schema({
   statement: { type: String, required: true },
+  description: { type: String },
   fulfillment: { type: Number, default: 0, min: 0, max: 100 },
   impossible: { type: Boolean, default: false },
   lastUpdate: { type: Date, default: Date.now }
