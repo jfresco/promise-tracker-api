@@ -3,13 +3,12 @@ import config from '../src/config'
 
 // Fixtures
 import subjects from './subjects'
-// import predicates from './predicates'
 
-// Data APIs
+// Data API
 import Subject from '../src/data/api/subject'
-// import Predicate from '../src/data/api/predicate'
 
 function write (msg) {
+  /*eslint no-console:0*/
   console.log(msg)
 }
 
