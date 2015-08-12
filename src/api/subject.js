@@ -11,7 +11,7 @@ server.route({
   config: {
     auth: false,
     cors: true,
-    tags: ['subjects'],
+    tags: ['api', 'subjects'],
     description: 'Get a list of all subjects',
     handler: (request, reply) => {
       log('GETting /api/subjects')
@@ -35,7 +35,7 @@ server.route({
     auth: false,
     cors: true,
     description: 'Get one subject details',
-    tags: ['subjects'],
+    tags: ['api', 'subjects'],
     handler: (request, reply) => {
       log('GETting /api/subject/%s', request.params.id)
       Subject.findBySlug(request.params.slug, (err, doc) => {
@@ -61,7 +61,7 @@ server.route({
     auth: 'jwt',
     cors: true,
     description: 'Creates a new subject',
-    tags: ['subjects'],
+    tags: ['api', 'subjects'],
     handler: (request, reply) => reply(error.notImplemented('yet not implemented'))
   }
 })
@@ -73,7 +73,7 @@ server.route({
     auth: 'jwt',
     cors: true,
     description: 'Modifies an existing subject',
-    tags: ['subjects'],
+    tags: ['api', 'subjects'],
     handler: (request, reply) => reply(error.notImplemented('yet not implemented'))
   }
 })
@@ -85,7 +85,7 @@ server.route({
     auth: 'jwt',
     cors: true,
     description: 'Deletes a subject',
-    tags: ['subjects'],
+    tags: ['api', 'subjects'],
     handler: (request, reply) => reply(error.notImplemented('yet not implemented'))
   }
 })

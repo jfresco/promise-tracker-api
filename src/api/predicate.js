@@ -11,7 +11,7 @@ server.route({
   config: {
     auth: false,
     cors: true,
-    tags: ['promises'],
+    tags: ['api', 'promises'],
     description: 'Gets a list of all promises of a certain subject',
     handler: (request, reply) => {
       log('GETting /api/promises')
@@ -35,7 +35,7 @@ server.route({
     auth: 'jwt',
     cors: true,
     description: 'Adds a new promise to a subject',
-    tags: ['promises'],
+    tags: ['api', 'promises'],
     handler: (request, reply) => reply(error.notImplemented('yet not implemented'))
   }
 })
@@ -47,7 +47,7 @@ server.route({
     auth: 'jwt',
     cors: true,
     description: 'Modifies an existing promise',
-    tags: ['promises'],
+    tags: ['api', 'promises'],
     handler: (request, reply) => reply(error.notImplemented('yet not implemented'))
   }
 })
@@ -59,7 +59,7 @@ server.route({
     auth: 'jwt',
     cors: true,
     description: 'Deletes a promise',
-    tags: ['subjects'],
+    tags: ['api', 'subjects'],
     handler: (request, reply) => reply(error.notImplemented('yet not implemented'))
   }
 })
