@@ -16,3 +16,5 @@ export function findById (id, cb) {
     .findOne({ id: id })
     .exec((err, res) => cb(err, res))
 }
+
+export default Predicate

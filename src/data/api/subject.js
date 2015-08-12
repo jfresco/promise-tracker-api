@@ -16,3 +16,5 @@ export function findById (id, cb) {
     .select('id identifier name description begin end')
     .exec((err, res) => cb(err, res))
 }
+
+export default Subject
