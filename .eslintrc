@@ -17,6 +17,6 @@
         "no-alert": 2,
         "no-debugger": 2,
         "no-console": 2,
-        "quotes": [2, "single"]
+        "quotes": [2, "single", "avoid-escape"]
     }
 }

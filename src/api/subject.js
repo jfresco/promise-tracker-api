@@ -44,7 +44,7 @@ server.route({
           return reply(err)
         }
         if (!doc) {
-          return reply(error.badRequest(`Subject with slug ${request.params.slug} not found`))
+          return reply(error.badRequest('Subject with slug ' + request.params.slug + ' not found'))
         }
 
         log('Delivering subject with ID %s', doc.id)
