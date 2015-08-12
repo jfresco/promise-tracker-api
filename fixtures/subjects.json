@@ -1,0 +1,60 @@
+[
+  {
+    "slug": "hector",
+    "name": "Hector Martinez Carreta",
+    "description": "Hector Governor of Galaxy 2315-2319",
+    "begin": "2015-09-15",
+    "end": "2016-09-15",
+    "promises": [
+      {
+        "statement": "Lower taxes",
+        "fulfillment": 25,
+        "impossible": false
+      },
+      {
+        "statement": "Change colors of semaphor lights",
+        "fulfillment": 0,
+        "impossible": true
+      },
+      {
+        "statement": "Build special lanes for buses",
+        "fulfillment": 100,
+        "impossible": false
+      },
+      {
+        "statement": "Make mandatory for bikers to use helmets",
+        "fulfillment": 33,
+        "impossible": false
+      }
+    ]
+  },
+  {
+    "slug": "dan",
+    "name": "Lieutenant Dan Yoli",
+    "description": "Lieutenant Dan, Regent of Terminus",
+    "begin": "2014-01-01",
+    "end": "2018-12-30",
+    "promises": [
+      {
+        "statement": "Raise taxes",
+        "fulfillment": 0,
+        "impossible": false
+      },
+      {
+        "statement": "Football for everyone",
+        "fulfillment": 11,
+        "impossible": true
+      },
+      {
+        "statement": "Law-rate credits for buying boats",
+        "fulfillment": 50,
+        "impossible": true
+      },
+      {
+        "statement": "Amnesty for all military officers",
+        "fulfillment": 33,
+        "impossible": false
+      }
+    ]
+  }
+]

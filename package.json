@@ -6,7 +6,8 @@
   "scripts": {
     "start": "./node_modules/.bin/babel-node index.js",
     "lint": "./node_modules/.bin/eslint .",
-    "test": "mocha --compilers js:babel/register"
+    "test": "mocha --compilers js:babel/register",
+    "fixtures": "./node_modules/.bin/babel-node fixtures/index.js"
   },
   "author": "",
   "license": "MIT",
