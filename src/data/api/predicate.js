@@ -1,6 +1,6 @@
 import debug from 'debug'
 import Subject from '../models/subject'
-import Predicate from '../models/predicate'
+// import Predicate from '../models/predicate'
 
 const log = debug('promise-tracker-api:data:api:predicate')
 
@@ -11,10 +11,10 @@ export function all (subjectId, cb) {
     .exec((err, res) => cb(err, res))
 }
 
-export function findById (id, cb) {
-  Predicate
-    .findOne({ id: id })
-    .exec((err, res) => cb(err, res))
-}
+// export function findById (id, cb) {
+//   Predicate
+//     .findOne({ id: id })
+//     .exec((err, res) => cb(err, res))
+// }
 
-export default Predicate
+// export default Predicate
