@@ -32,7 +32,7 @@ describe('subject', () => {
 
       res.body.should.be.an('object')
         .and.have.property('id')
-        .and.have.property('identifier')
+        .and.have.property('slug')
         .and.have.property('name')
         .and.have.property('description')
         .and.have.property('begin')

@@ -30,7 +30,7 @@ server.route({
 
 server.route({
   method: 'GET',
-  path: '/subject/{id}',
+  path: '/subject/{slug}',
   config: {
     auth: false,
     cors: true,
@@ -38,13 +38,13 @@ server.route({
     tags: ['subjects'],
     handler: (request, reply) => {
       log('GETting /api/subject/%s', request.params.id)
-      Subject.findById(request.params.id, (err, doc) => {
+      Subject.findBySlug(request.params.slug, (err, doc) => {
         if (err) {
           log('Error: %s', err)
           return reply(err)
         }
         if (!doc) {
-          return reply(error.badRequest(`Subject with ID ${request.params.id} not found`))
+          return reply(error.badRequest(`Subject with slug ${request.params.slug} not found`))
         }
 
         log('Delivering subject with ID %s', doc.id)

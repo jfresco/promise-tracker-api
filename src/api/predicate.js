@@ -1,13 +1,13 @@
 import debug from 'debug'
 import server from '../server'
 import error from 'boom'
-import * as Predicate from '../data/api/predicate'
+import * as Subject from '../data/api/subject'
 
 const log = debug('promise-tracker-api:api')
 
 server.route({
   method: 'GET',
-  path: '/subject/{subjectId}/promises',
+  path: '/subject/{slug}/promises',
   config: {
     auth: false,
     cors: true,
@@ -15,7 +15,7 @@ server.route({
     description: 'Gets a list of all promises of a certain subject',
     handler: (request, reply) => {
       log('GETting /api/promises')
-      Predicate.all(request.params.subjectId, (err, docs) => {
+      Subject.getPromises(request.params.slug, (err, docs) => {
         if (err) {
           log('Error: %s', err)
           return reply(err)
@@ -30,7 +30,7 @@ server.route({
 
 server.route({
   method: 'POST',
-  path: '/subject/{subjectId}/promise',
+  path: '/subject/{slug}/promise',
   config: {
     auth: 'jwt',
     cors: true,
