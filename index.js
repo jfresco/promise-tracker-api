@@ -2,6 +2,7 @@ import debug from 'debug'
 import './src/api'
 import server from './src/server'
 import mongoose from 'mongoose'
+import config from './src/config'
 
 const log = debug('promise-tracker-api:main')
 
@@ -10,7 +11,7 @@ const log = debug('promise-tracker-api:main')
  */
 
 log('Connecting to database')
-mongoose.connect('mongodb://localhost/promesas')
+mongoose.connect(config.dbURI)
 
 /*
  * Launch server
