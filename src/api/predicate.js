@@ -7,7 +7,7 @@ const log = debug('promise-tracker-api:api')
 
 server.route({
   method: 'GET',
-  path: '/api/subject/{subjectId}/promises',
+  path: '/subject/{subjectId}/promises',
   config: {
     auth: false,
     cors: true,
@@ -30,7 +30,7 @@ server.route({
 
 server.route({
   method: 'POST',
-  path: '/api/subject/{subjectId}/promise',
+  path: '/subject/{subjectId}/promise',
   config: {
     auth: 'jwt',
     cors: true,
@@ -42,7 +42,7 @@ server.route({
 
 server.route({
   method: 'PUT',
-  path: '/api/promise/{id}',
+  path: '/promise/{id}',
   config: {
     auth: 'jwt',
     cors: true,
@@ -54,7 +54,7 @@ server.route({
 
 server.route({
   method: 'DELETE',
-  path: '/api/promise/{id}',
+  path: '/promise/{id}',
   config: {
     auth: 'jwt',
     cors: true,
