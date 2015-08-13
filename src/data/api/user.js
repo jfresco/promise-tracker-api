@@ -1,6 +1,15 @@
 import { decrypt } from '../../util/crypt'
 import User from '../models/user'
 
+const publicFields = '_id handle name password role verified'
+
+export function findByHandle (handle, cb) {
+  return User
+    .findOne({ handle: handle })
+    .select(publicFields)
+    .exec(cb)
+}
+
 export function create (data, cb) {
   let user = new User(data)
   user.save(err => {
@@ -15,7 +24,7 @@ export function create (data, cb) {
 export function validate (data, cb) {
   return User
     .findOne({ handle: data.handle })
-    .select('_id handle name password scope verified')
+    .select(publicFields)
     .exec((err, user) => {
       if (err) {
         return cb(err)

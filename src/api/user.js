@@ -27,6 +27,7 @@ server.route({
       User.create({
         handle: request.payload.userName,
         password: encrypt(request.payload.password),
+        role: 'collaborator',
         // todo: set it to true only when email is verified
         verified: true
       }, (err, doc) => {
@@ -72,12 +73,12 @@ server.route({
         }
         const tokenData = {
           userName: user.handle,
-          scope: [user.scope],
+          role: user.role,
           id: user._id
         }
         const res = {
           userName: user.handle,
-          scope: user.scope,
+          role: user.role,
           token: JWT.sign(tokenData, config.secret)
         }
 

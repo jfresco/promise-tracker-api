@@ -1,26 +1,28 @@
 import debug from 'debug'
 import Subject from '../models/subject'
+import * as User from './user'
 
 const log = debug('promise-tracker-api:data:api:subject')
+const publicFields = 'id slug name description begin end'
 
 export function all (cb) {
   Subject
     .find({})
-    .select('id slug name description begin end')
+    .select(publicFields)
     .exec((err, res) => cb(err, res))
 }
 
 export function findById (id, cb) {
   Subject
     .findOne({ id: id })
-    .select('id slug name description begin end')
+    .select(publicFields)
     .exec((err, res) => cb(err, res))
 }
 
 export function findBySlug (slug, cb) {
   Subject
     .findOne({ slug: slug })
-    .select('id slug name description begin end')
+    .select(publicFields)
     .exec((err, res) => cb(err, res))
 }
 

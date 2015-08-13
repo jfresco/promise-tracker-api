@@ -7,6 +7,9 @@ import * as db from '../src/data/api/user'
 const should = chai.should()
 const api = supertest('http://localhost:8000')
 
+// Store authorization token for reuse
+let token = ''
+
 describe('User API', () => {
   it('can create a new user', done => {
     api
@@ -38,8 +41,16 @@ describe('User API', () => {
         if (err) {
           return done(err)
         }
+        token = res.body.token
         done()
       })
+  })
+
+  it('should reject requests with no token', done => {
+    api
+      .post('/subject')
+      .expect(401) // unauthorized
+      .end(done)
   })
 
   it('should fail sign in with wrong password', done => {
@@ -47,7 +58,7 @@ describe('User API', () => {
       .post('/login')
       .field('userName', 'pepe@example.com')
       .field('password', 'abc987')
-      .expect(403)
+      .expect(403) // forbidden
       .end(done)
   })
 
@@ -56,11 +67,12 @@ describe('User API', () => {
       .post('/login')
       .field('userName', 'cacho@example.com')
       .field('password', 'xyz123')
-      .expect(403)
+      .expect(403) // forbidden
       .end(done)
   })
 
   after(done => {
+    // Remove documents created in this tests
     mongoose.connect(config.dbURI)
     db.remove({ handle: 'pepe@example.com' }, () => {
       mongoose.disconnect()
