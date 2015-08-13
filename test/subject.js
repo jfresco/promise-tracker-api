@@ -7,7 +7,7 @@ const api = supertest('http://localhost:8000')
 describe('subject', () => {
   it('should return a list of subjects', done => {
     api
-    .get('/api/subjects')
+    .get('/subjects')
     .expect(200)
     .expect('Content-Type', /json/)
     .end((err, res) => {
@@ -20,9 +20,9 @@ describe('subject', () => {
     })
   })
 
-  it('should get a subject by id', done => {
+  it('should get a subject by slug', done => {
     api
-    .get('/api/subject/1')
+    .get('/subject/hector')
     .expect(200)
     .expect('Content-Type', /json/)
     .end((err, res) => {
@@ -30,13 +30,14 @@ describe('subject', () => {
         return done(err)
       }
 
-      res.body.should.be.an('object')
-        .and.have.property('id')
-        .and.have.property('slug')
-        .and.have.property('name')
-        .and.have.property('description')
-        .and.have.property('begin')
-        .and.have.property('end')
+      const subject = res.body
+      subject.should.be.an('object')
+      subject.should.have.property('slug')
+      subject.should.have.property('_id')
+      subject.should.have.property('name')
+      subject.should.have.property('description')
+      subject.should.have.property('begin')
+      subject.should.have.property('end')
 
       done()
     })
