@@ -30,5 +30,12 @@ describe('User', () => {
       .post('/login')
       .field('userName', 'pepe@example.com')
       .field('password', 'xyz123')
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+        done()
+      })
   })
 })

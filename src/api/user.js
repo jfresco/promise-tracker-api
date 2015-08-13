@@ -2,6 +2,7 @@ import debug from 'debug'
 import error from 'boom'
 import Joi from 'joi'
 import JWT from 'jsonwebtoken'
+import config from '../config'
 import { encrypt, decrypt } from '../util/crypt'
 import server from '../server'
 import * as User from '../data/api/user'
@@ -20,6 +21,7 @@ server.route({
     },
     auth: false,
     tags: ['api', 'user'],
+    description: 'Creates a new user',
     handler: (request, reply) => {
       log('POSTing to /user')
       User.create({
@@ -55,37 +57,32 @@ server.route({
         password: Joi.string().required()
       }
     },
+    auth: false,
     tags: ['api', 'user'],
+    description: 'Validates user name and password and returns a session token',
     handler: (request, reply) => {
       log('POSTing /login for %s', request.payload.userName)
-      User.findOne({ handle: request.payload.userName }, (err, user) => {
+      User.validate({
+        handle: request.payload.userName,
+        password: request.payload.password
+      }, (err, user) => {
         if (err) {
           log('Error: %s', err)
           reply(error.forbidden(err))
         }
-        if (user === null) {
-          log('User not found: %s', request.payload.userName)
-          reply(error.forbidden('Invalid user name or password'))
+        const tokenData = {
+          userName: user.handle,
+          scope: [user.scope],
+          id: user._id
+        }
+        const res = {
+          userName: user.handle,
+          scope: user.scope,
+          token: JWT.sign(tokenData, config.secret)
         }
 
-        log('User %s found. Validating password...', request.payload.userName)
-        if (request.payload.password === decrypt(user.password)) {
-          const tokenData = {
-            userName: user.handle,
-            scope: [user.scope],
-            id: user._id
-          }
-          const res = {
-            userName: user.handle,
-            scope: user.scope,
-            token: JWT.sign(tokenData, config.secret)
-          }
-
-          log('Password is ok, returning data: %j', res)
-          reply(res)
-        } else {
-          reply(error.forbidden('Invalid user name or password'))
-        }
+        log('Password is ok, returning data: %j', res)
+        reply(res)
       })
     }
   }
