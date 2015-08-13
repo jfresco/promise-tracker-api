@@ -4,8 +4,8 @@ import supertest from 'supertest'
 const should = chai.should()
 const api = supertest('http://localhost:8000')
 
-describe('subject', () => {
-  it('should return a list of subjects', done => {
+describe('Subject API', () => {
+  it('can return a list of subjects', done => {
     api
     .get('/subjects')
     .expect(200)
@@ -20,7 +20,7 @@ describe('subject', () => {
     })
   })
 
-  it('should get a subject by slug', done => {
+  it('can get a subject by slug', done => {
     api
     .get('/subject/hector')
     .expect(200)

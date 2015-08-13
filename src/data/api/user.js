@@ -30,4 +30,8 @@ export function validate (data, cb) {
     })
 }
 
+export function remove (query, cb) {
+  User.findOneAndRemove(query, cb)
+}
+
 export default User
