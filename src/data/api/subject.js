@@ -33,4 +33,32 @@ export function getPromises (slug, cb) {
     .exec((err, res) => cb(err, res))
 }
 
+export function create (data, cb) {
+  User.findByHandle(data.creator, (err, user) => {
+    if (err) {
+      return cb(err)
+    } else if (!user) {
+      return cb(new Error('User not found'))
+    }
+
+    let subject = new Subject({
+      slug: data.slug,
+      name: data.name,
+      description: data.description,
+      end: data.end,
+      creator: user
+    })
+
+    if (data.begin) {
+      subject.begin = data.begin
+    }
+
+    subject.save(cb)
+  })
+}
+
+export function remove (query, cb) {
+  Subject.findOneAndRemove(query, cb)
+}
+
 export default Subject

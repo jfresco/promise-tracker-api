@@ -1,10 +1,54 @@
 import chai from 'chai'
 import supertest from 'supertest'
+import mongoose from 'mongoose'
+import config from '../src/config'
+import * as SubjectData from '../src/data/api/subject'
+import * as UserData from '../src/data/api/user'
 
 const should = chai.should()
 const api = supertest('http://localhost:8000')
+let token = ''
 
 describe('Subject API', () => {
+  before(done => {
+    // We create a user and get the login token
+    api
+      .post('/user')
+      .field('userName', 'pepe@example.com')
+      .field('password', 'xyz123')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+
+        api
+          .post('/login')
+          .field('userName', 'pepe@example.com')
+          .field('password', 'xyz123')
+          .expect(200)
+          .end((err, res) => {
+            if (err) {
+              return done(err)
+            }
+            token = res.body.token
+            done()
+          })
+      })
+  })
+
+  after(done => {
+    // Remove documents created in this tests
+    mongoose.connect(config.dbURI)
+    SubjectData.remove({ slug: 'cacho' }, () => {
+      UserData.remove({ handle: 'pepe@example.com'}, () => {
+        mongoose.disconnect()
+        done()
+      })
+    })
+  })
+
   it('can return a list of subjects', done => {
     api
     .get('/subjects')
@@ -41,5 +85,17 @@ describe('Subject API', () => {
 
       done()
     })
+  })
+
+  it('can create a new subject', done => {
+    api
+      .post('/subject')
+      .set('Authorization', token)
+      .field('slug', 'cacho')
+      .field('name', 'Cachito Vigil')
+      .field('description', 'Cachito Emperador de la Galaxia')
+      .field('end', '2018-11-14')
+      .expect(200)
+      .end(done)
   })
 })

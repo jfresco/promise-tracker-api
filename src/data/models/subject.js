@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
+const ObjectId = Schema.ObjectId
 
 const Predicate = new Schema({
   statement: { type: String, required: true },
@@ -11,11 +12,14 @@ const Predicate = new Schema({
 })
 
 const Subject = new Schema({
-  slug: { type: String, required: true },
+  slug: { type: String, required: true, unique: true },
   name: { type: String, required: true },
   description: { type: String },
-  begin: { type: Date, default: Date.now, required: true },
+  begin: { type: Date, default: Date.now },
   end: { type: Date, required: true },
+  createdAt: { type: Date, default: Date.now },
+  creator: { type: ObjectId, ref: 'User' },
+  collaborators: [{ type: ObjectId, ref: 'User' }],
   promises: [Predicate]
 })
 

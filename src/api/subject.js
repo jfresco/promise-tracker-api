@@ -1,4 +1,5 @@
 import debug from 'debug'
+import Joi from 'joi'
 import server from '../server'
 import error from 'boom'
 import * as Subject from '../data/api/subject'
@@ -61,8 +62,32 @@ server.route({
     auth: 'jwt',
     cors: true,
     description: 'Creates a new subject',
+    validate: {
+      payload: {
+        slug: Joi.string().required(),
+        name: Joi.string().required(),
+        description: Joi.string(),
+        begin: Joi.date(),
+        end: Joi.date().required()
+      }
+    },
     tags: ['api', 'subjects'],
-    handler: (request, reply) => reply(error.notImplemented('yet not implemented'))
+    handler: (request, reply) => {
+      log('Request: %j', request.auth)
+      const role = request.auth.credentials.role
+      if (role !== 'owner' && role !== 'collaborator') {
+        return reply(error.unauthorized('You are not allowed to do this'))
+      }
+
+      request.payload.creator = request.auth.credentials.userName
+      Subject.create(request.payload, (err, subject) => {
+        if (err) {
+          log('Error creating subject: %s', err)
+          return reply(error.badRequest(err))
+        }
+        reply(subject)
+      })
+    }
   }
 })
 
